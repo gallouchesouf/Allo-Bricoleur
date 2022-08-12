@@ -1,0 +1,163 @@
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Add BRICOLEUR</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="mission.html">View-Mission</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- /Page Header -->
+  
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <form (ngSubmit)="addBricoleur()" [formGroup]="addBricoleurForm">
+              <div class="row">
+                <div class="col-12">
+                  <h5 class="form-title"><span>Bricoleur Information</span></h5>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Nom<span class="mandatory">*</span></label>
+                    <input type="text" class="form-control" [class.invalid]="addBricoleurForm.get('nom')?.invalid && addBricoleurForm.get('Nom')?.touched"
+                    formControlName="nom">
+                    <div
+                    *ngIf="addBricoleurForm.get('nom')?.invalid && addBricoleurForm.get('nom')?.touched">
+                    <small
+                        *ngIf="addBricoleurForm.get('nom')?.invalid && addBricoleurForm.get('nom')?.touched"
+                        class="text-danger"> *nom' is required</small>
+                </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Prénom</label>
+                    <input type="text" class="form-control" formControlName="prenom">
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Carte d'Identité Nationale<span class="mandatory">*</span></label>
+                    <input type="text" class="form-control" [class.invalid]="addBricoleurForm.get('cin')?.invalid && addBricoleurForm.get('cin')?.touched"
+                    formControlName="cin">
+                    <div
+                    *ngIf="addBricoleurForm.get('cin')?.invalid && addBricoleurForm.get('cin')?.touched">
+                    <small
+                        *ngIf="addBricoleurForm.get('cin')?.invalid && addBricoleurForm.get('cin')?.touched"
+                        class="text-danger"> *cin is required</small>
+                </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Le genre</label>
+                    <select class="form-control" formControlName="genre">
+                      <option>Sélectionnez le genre</option>
+                      <option>Homme</option>
+                      <option>femme</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Email<span class="mandatory">*</span></label>
+                    <div>
+                      <input type="email" class="form-control" [class.invalid]="addBricoleurForm.get('email')?.invalid && addBricoleurForm.get('email')?.touched"
+                      formControlName="email">
+                      <div
+                      *ngIf="addBricoleurForm.get('email')?.invalid && addBricoleurForm.get('email')?.touched">
+                      <small
+                          *ngIf="addBricoleurForm.get('email')?.invalid && addBricoleurForm.get('email')?.touched"
+                          class="text-danger"> *email' is required</small>
+                  </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Mot de passe<span class="mandatory">*</span></label>
+                    <input type="password" class="form-control" placeholder="Password *" [class.invalid]="addBricoleurForm.get('password')?.invalid && addBricoleurForm.get('password')?.touched"
+                    formControlName="password">
+                    <div
+                    *ngIf="addBricoleurForm.get('password')?.invalid && addBricoleurForm.get('password')?.touched">
+                    <small
+                        *ngIf="addBricoleurForm.get('password')?.invalid && addBricoleurForm.get('password')?.touched"
+                        class="text-danger"> *Class is required</small>
+                </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Adresse</label>
+                    <input type="text" class="form-control" placeholder="Adresse *" formControlName="adresse">
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Type Bricolage</label>
+                    <div>
+                      <select class="form-control" formControlName="typeBricolage">
+                        <option disabled="" checked="">Sous Service</option>
+                        <option *ngFor="let sous of  sousServices" value="{{sous.idsd}}">{{sous.nomsd}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Téléphone<span class="mandatory">*</span></label>
+                    <input type="text" class="form-control" placeholder="Téléphone *" [class.invalid]="addBricoleurForm.get('telephone')?.invalid && addBricoleurForm.get('telephone')?.touched"
+                    formControlName="telephone">
+                    <div
+                      *ngIf="addBricoleurForm.get('telephone')?.invalid && addBricoleurForm.get('telephone')?.touched">
+                      <small
+                          *ngIf="addBricoleurForm.get('telephone')?.invalid && addBricoleurForm.get('telephone')?.touched"
+                          class="text-danger"> *Mobilenumber is required</small>
+                  </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Année Expérience</label>
+                    <select class="form-control" formControlName="experience">
+                      <option disabled="" checked="">Annee Experience</option>
+                      <option *ngFor="let exp of  experience" value="{{exp}}">{{exp}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Ville</label>
+                    <select class="form-control" formControlName="ville">
+                      <option disabled="" checked="">Select Ville</option>
+                      <option *ngFor="let ville of  villes" value="{{ville.idv}}">{{ville.nomv}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Apropos de Moi</label>
+                    <input type="text" class="form-control" rows="3"
+                    cols="20"
+                    className="form-control"
+                    placeholder="Décrivez vous en quelques mots afin de donner envie aux gens de vous contacter *"
+                    formControlName="apropos">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary" (click)="addBricoleur()">Ajouter</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
